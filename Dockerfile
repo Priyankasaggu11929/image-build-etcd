@@ -8,6 +8,7 @@ ARG GO_IMAGE=rancher/image-build-base:latest
 
 FROM ${GO_IMAGE} as base-builder
 
+
 RUN set -euo pipefail; \
     zypper -n install --no-recommends \
     # file \
