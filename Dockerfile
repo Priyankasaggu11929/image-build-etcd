@@ -16,4 +16,5 @@ RUN set -euo pipefail; \
     clang7 \
     make; \
     zypper -n clean; \
+    zypper search lld
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
