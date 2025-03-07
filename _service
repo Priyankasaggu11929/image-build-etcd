@@ -13,7 +13,7 @@
     <param name="compression">gz</param>
   </service>
  <service name="go_modules" >
-    <param name="archive">etcd-3.5.13-k3s1.tar.gz</param>
+    <param name="archive">*.tar.gz</param>
  </service>
  <service name="download_assets" />
 </services>
