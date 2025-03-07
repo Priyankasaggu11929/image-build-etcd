@@ -15,7 +15,8 @@ RUN set -euo pipefail; \
     gcc \
     # git \
     clang7 \
+    llvm \
+    lld \
     make; \
-    zypper search lld; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
