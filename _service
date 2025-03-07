@@ -7,5 +7,13 @@
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="revision">v3.5.13-k3s1</param>
   </service>
+  <service name="tar" />
+  <service name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+ <service name="go_modules" >
+    <param name="archive">coredns-1.11.3.tar.gz</param>
+ </service>
  <service name="download_assets" />
 </services>
