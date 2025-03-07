@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="buildtime">
+  <service name="obs_scm">
     <param name="url">https://github.com/k3s-io/etcd.git</param>
     <param name="scm">git</param>
     <param name="package-meta">yes</param>
