@@ -20,3 +20,16 @@ RUN set -euo pipefail; \
     make; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
+
+
+FROM base-builder as etcd-builder
+# setup the build
+ARG TARGETARCH
+ARG PKG=go.etcd.io/etcd
+ARG SRC=github.com/k3s-io/etcd
+ARG TAG="v3.5.13-k3s1"
+
+COPY etcd-v3.5.13-k3s1 ${GOPATH}/src/${PKG}
+WORKDIR ${GOPATH}/src/${PKG}
+
+
