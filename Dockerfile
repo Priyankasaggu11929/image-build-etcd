@@ -32,7 +32,8 @@ ARG TAG="v3.5.13-k3s1"
 COPY etcd.tar.gz vendor.tar.gz ./
 RUN mkdir -p ${GOPATH}/src/${PKG}; \
     tar -xvzf etcd.tar.gz --strip-components=1 -C ${GOPATH}/src/${PKG}; \
-    tar -xvzf vendor.tar.gz --strip-components=1 -C ${GOPATH}/src/${PKG}/
+    tar -xvzf vendor.tar.gz; /
+    mv vendor ${GOPATH}/src/${PKG}/
     
 WORKDIR ${GOPATH}/src/${PKG}
 RUN ls ${GOPATH}/src/${PKG}/ 
@@ -42,11 +43,11 @@ ARG TARGETPLATFORM
 # build and assert statically linked executable(s)
 RUN export GO_LDFLAGS="-linkmode=external -X ${PKG}/version.GitSHA=$(git rev-parse --short HEAD)" && \
     if echo ${TAG} | grep -qE '^v3\.4\.'; then \
-        go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -o bin/etcd . && \
-        go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -o bin/etcdctl ./etcdctl; \
+        go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor -o bin/etcd . && \
+        go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor  -o bin/etcdctl ./etcdctl; \
     else \
-        cd $GOPATH/src/${PKG}/server  && go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -o ../bin/etcd . && \
-        cd $GOPATH/src/${PKG}/etcdctl && go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -o ../bin/etcdctl .; \
+        cd $GOPATH/src/${PKG}/server  && go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor -o ../bin/etcd . && \
+        cd $GOPATH/src/${PKG}/etcdctl && go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor -o ../bin/etcdctl .; \
     fi
 
 # RUN go-assert-static.sh bin/*
