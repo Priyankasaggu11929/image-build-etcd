@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm">
+  <service name="tar_scm">
     <param name="url">https://github.com/k3s-io/etcd.git</param>
     <param name="scm">git</param>
     <param name="package-meta">yes</param>
@@ -8,7 +8,6 @@
     <param name="revision">v3.5.13-k3s1</param>
     <param name="without-version">yes</param>
   </service>
-  <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
