@@ -13,7 +13,7 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="buildtime">
-    <param name="archive">*.tar.gz</param>
+    <param name="archive">etcd.tar.gz</param>
   </service>
   <service name="download_assets" />
 </services>
