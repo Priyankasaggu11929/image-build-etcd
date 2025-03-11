@@ -33,4 +33,9 @@ COPY etcd ${GOPATH}/src/${PKG}/
 WORKDIR ${GOPATH}/src/${PKG}
 RUN ls ${GOPATH}/src/${PKG}/
 
+COPY vendor.tar.gz .
+
+RUN ls ${GOPATH}/src/${PKG}/
+
+
 
