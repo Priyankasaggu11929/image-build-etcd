@@ -29,7 +29,7 @@ ARG PKG=go.etcd.io/etcd
 ARG SRC=github.com/k3s-io/etcd
 ARG TAG="v3.5.13-k3s1"
 
-COPY ./ ${GOPATH}/src/${PKG}/
+COPY etcd ${GOPATH}/src/${PKG}/
 WORKDIR ${GOPATH}/src/${PKG}
 RUN ls ${GOPATH}/src/${PKG}/
 
