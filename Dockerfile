@@ -30,7 +30,7 @@ ARG SRC=github.com/k3s-io/etcd
 ARG TAG="v3.5.13-k3s1"
 
 COPY etcd.tar.gz .
-RUN tar -xvzf etcd.tar.gz --strip-components=1 -C ${GOPATH}/src/${PKG}
+RUN mkdir -p ${GOPATH}/src/${PKG} && tar -xvzf etcd.tar.gz --strip-components=1 -C ${GOPATH}/src/${PKG}
 WORKDIR ${GOPATH}/src/${PKG}
 RUN ls ${GOPATH}/src/${PKG}/
 
