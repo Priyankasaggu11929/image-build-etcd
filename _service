@@ -24,9 +24,7 @@
     <param name="include">server</param>
     <param name="filename">server</param>
   </service>
-  <service name="go_modules">
-    <param name="archive">*server.obscpio</param>
-  </service>
+
 
   <service name="obs_scm">
     <param name="url">https://github.com/k3s-io/etcd.git</param>
@@ -39,9 +37,7 @@
     <param name="include">etcdctl</param>
     <param name="filename">etcdctl</param>
   </service>
-  <service name="go_modules">
-    <param name="archive">*etcdctl.obscpio</param>
-  </service>
+
 
   <service name="download_assets" />
 </services>
