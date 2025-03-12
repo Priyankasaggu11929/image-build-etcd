@@ -29,10 +29,8 @@ ARG PKG=go.etcd.io/etcd
 ARG SRC=github.com/k3s-io/etcd
 ARG TAG="v3.5.13-k3s1"
 
-COPY etcd.tar.gz vendor.tar.gz ./
-RUN mkdir -p ${GOPATH}/src/${PKG}/vendor; \
-    tar -xvzf etcd.tar.gz --strip-components=1 -C ${GOPATH}/src/${PKG}; \
-    tar -xvzf vendor.tar.gz --strip-components=1 -C ${GOPATH}/src/${PKG}/vendor; 
+COPY etcd ${GOPATH}/src/${PKG}
+ADD vendor.tar.gz ${GOPATH}/src/${PKG}
     
 WORKDIR ${GOPATH}/src/${PKG}
 RUN ls ${GOPATH}/src/${PKG}/; \
