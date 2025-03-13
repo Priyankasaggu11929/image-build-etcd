@@ -16,10 +16,10 @@ RUN set -euo pipefail; \
     # clang7 \
     # llvm7 \
     # lld \
-    glibc \
-    glibc-devel-static \    
-    # musl-gcc \
-    # musl-libc-static \
+    # glibc \
+    # glibc-devel-static \    
+    musl-gcc \
+    musl-libc-static \
     make; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
@@ -44,12 +44,6 @@ ADD vendor-etcdctl.tar.gz ${GOPATH}/src/${PKG}/etcdctl
 ADD vendor-server.tar.gz ${GOPATH}/src/${PKG}/server
     
 WORKDIR ${GOPATH}/src/${PKG}
-RUN ls ${GOPATH}/src/${PKG}/; \
-    ls ${GOPATH}/src/${PKG}/vendor/; \
-    ls ${GOPATH}/src/${PKG}/etcdctl/; \
-    ls ${GOPATH}/src/${PKG}/etcdctl/vendor/; \
-    ls ${GOPATH}/src/${PKG}/server/ ; \
-    ls ${GOPATH}/src/${PKG}/server/vendor/;
 
 # cross-compilation setup
 ARG TARGETPLATFORM
