@@ -14,11 +14,11 @@ RUN set -euo pipefail; \
     # file \
     gcc \
     # git \
-    clang7 \
-    llvm \
-    lld \
-    # musl-gcc \
-    # musl-libc-static \
+    # clang7 \
+    # llvm7 \
+    # lld \
+    musl-gcc \
+    musl-libc-static \
     make; \
     zypper -n clean; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
@@ -30,11 +30,11 @@ ARG TARGETARCH
 ARG PKG=go.etcd.io/etcd
 ARG SRC=github.com/k3s-io/etcd
 ARG TAG="v3.5.13-k3s1"
-# ENV C_INCLUDE_PATH="/usr/x86_64-linux-musl/include/:/usr/include/"
-# ENV CC="musl-gcc"
-ENV CC="clang"
-ENV CXX="clang++"
-ENV LD="lld"
+ENV C_INCLUDE_PATH="/usr/x86_64-linux-musl/include/:/usr/include/"
+ENV CC="musl-gcc"
+# ENV CC="clang"
+# ENV CXX="clang++"
+# ENV LD="lld"
 
 
 COPY etcd ${GOPATH}/src/${PKG}
