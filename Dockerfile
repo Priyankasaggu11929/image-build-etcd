@@ -37,7 +37,6 @@ ENV CC="musl-gcc"
 # ENV CXX="clang++"
 # ENV LD="lld"
 
-
 COPY etcd ${GOPATH}/src/${PKG}
 ADD vendor.tar.gz ${GOPATH}/src/${PKG}
 ADD vendor-etcdctl.tar.gz ${GOPATH}/src/${PKG}/etcdctl
