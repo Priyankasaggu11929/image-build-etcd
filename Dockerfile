@@ -47,11 +47,11 @@ ARG TARGETPLATFORM
 # build and assert statically linked executable(s)
 RUN export GO_LDFLAGS="-linkmode=external -X ${PKG}/version.GitSHA=$(git rev-parse --short HEAD)" && \
     if echo ${TAG} | grep -qE '^v3\.4\.'; then \
-        go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor -o bin/etcd . && \
-        go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor  -o bin/etcdctl ./etcdctl; \
+        go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor -buildvcs=false -o bin/etcd . && \
+        go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor -buildvcs=false -o bin/etcdctl ./etcdctl; \
     else \
-        cd $GOPATH/src/${PKG}/server  && go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor -o ../bin/etcd . && \
-        cd $GOPATH/src/${PKG}/etcdctl && go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor -o ../bin/etcdctl .; \
+        cd $GOPATH/src/${PKG}/server  && go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor -buildvcs=false -o ../bin/etcd . && \
+        cd $GOPATH/src/${PKG}/etcdctl && go-build-static.sh -gcflags=-trimpath=${GOPATH}/src -mod=vendor -buildvcs=false -o ../bin/etcdctl .; \
     fi
 
 # RUN go-assert-static.sh bin/*
