@@ -74,7 +74,8 @@ RUN rm /usr/local/bin/go-*.sh; \
     for bin in $(ls /usr/local/bin); do \
         strip /usr/local/bin/${bin}; \
     done
-RUN etcd --version
+RUN etcd --version; \
+    etcdctl version
 
 FROM scratch
 ARG ETCD_UNSUPPORTED_ARCH
