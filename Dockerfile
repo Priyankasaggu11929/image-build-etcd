@@ -52,7 +52,8 @@ RUN install bin/* /usr/local/bin
 FROM ${GO_IMAGE} as strip_binary
 #strip needs to run on TARGETPLATFORM, not BUILDPLATFORM
 COPY --from=etcd-builder /usr/local/bin/ /usr/local/bin
-RUN for bin in $(ls /usr/local/bin); do \
+RUN rm /usr/local/bin/go-*.sh; \
+    for bin in $(ls /usr/local/bin); do \
         strip /usr/local/bin/${bin}; \
     done
 RUN etcd --version
