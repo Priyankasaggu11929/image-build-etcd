@@ -31,10 +31,16 @@ ARG TAG="v3.5.13-k3s1"
 
 COPY etcd ${GOPATH}/src/${PKG}
 ADD vendor.tar.gz ${GOPATH}/src/${PKG}
+ADD vendor-etcdctl.tar.gz ${GOPATH}/src/${PKG}/etcdctl
+ADD vendor-server.tar.gz ${GOPATH}/src/${PKG}/server
     
 WORKDIR ${GOPATH}/src/${PKG}
 RUN ls ${GOPATH}/src/${PKG}/; \
-    ls ${GOPATH}/src/${PKG}/vendor/
+    ls ${GOPATH}/src/${PKG}/vendor/; \
+    ls ${GOPATH}/src/${PKG}/etcdctl/; \
+    ls ${GOPATH}/src/${PKG}/etcdctl/vendor/; \
+    ls ${GOPATH}/src/${PKG}/server/ ; \
+    ls ${GOPATH}/src/${PKG}/server/vendor/;
 
 # cross-compilation setup
 ARG TARGETPLATFORM
