@@ -15,7 +15,7 @@ ARG GO_IMAGE=rancher/image-build-base:latest
 # FROM ${GO_IMAGE} as base-builder
 # FROM base-builder as etcd-builder
 
- FROM ${GO_IMAGE} as etcd-builder
+FROM ${GO_IMAGE} as etcd-builder
 # setup the build
 ARG TARGETARCH
 ARG PKG=go.etcd.io/etcd
